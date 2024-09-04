@@ -15,6 +15,7 @@
  */
 package ghidra.util.bean.opteditor;
 
+import java.nio.file.Files;
 import static org.junit.Assert.*;
 
 import java.awt.*;
@@ -1416,7 +1417,7 @@ public class OptionsDialogTest extends AbstractGhidraHeadedIntegrationTest {
 	}
 
 	private void writeTempFile(String filename) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+		BufferedWriter writer = Files.newBufferedWriter(filename.toPath());
 		writer.write("test file");
 		writer.flush();
 		writer.close();

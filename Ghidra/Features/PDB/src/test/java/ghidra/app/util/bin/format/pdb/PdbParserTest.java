@@ -15,6 +15,7 @@
  */
 package ghidra.app.util.bin.format.pdb;
 
+import java.nio.file.Files;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -95,7 +96,7 @@ public class PdbParserTest extends AbstractGhidraHeadlessIntegrationTest {
 
 	private File buildPdbXml() throws IOException {
 		File destFile = new File(tempDir, pdbXmlFilename);
-		try (BufferedWriter xmlBuffWriter = new BufferedWriter(new FileWriter(destFile))) {
+		try (BufferedWriter xmlBuffWriter = Files.newBufferedWriter(destFile.toPath())) {
 
 			xmlBuffWriter.write("<pdb file=\"" + pdbFilename + "\" exe=\"" + programBasename +
 				"\" guid=\"{" + notepadGUID.toUpperCase() + "}\" age=\"" +

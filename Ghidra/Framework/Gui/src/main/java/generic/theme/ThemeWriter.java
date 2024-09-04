@@ -62,7 +62,7 @@ public class ThemeWriter {
 	 * @throws IOException if an I/O error occurs trying to write the file
 	 */
 	public void writeThemeToFile(File file) throws IOException {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+		try (BufferedWriter writer = Files.newBufferedWriter(file.toPath())) {
 			writeThemeValues(writer);
 		}
 	}

@@ -15,6 +15,7 @@
  */
 package ghidra.app.plugin.core.datamgr;
 
+import java.nio.file.Files;
 import static org.junit.Assert.*;
 
 import java.io.*;
@@ -275,7 +276,7 @@ public abstract class AbstractCreateArchiveTest extends AbstractGhidraHeadedInte
 		File file = new File(getTestDirectoryPath(), filename);
 		file.deleteOnExit();
 
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		BufferedWriter writer = Files.newBufferedWriter(file.toPath());
 		writer.write("test file");
 		writer.flush();
 		writer.close();

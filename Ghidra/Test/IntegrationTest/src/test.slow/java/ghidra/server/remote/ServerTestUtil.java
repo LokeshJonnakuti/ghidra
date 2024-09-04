@@ -17,6 +17,7 @@ package ghidra.server.remote;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.KeyStore.PrivateKeyEntry;
@@ -709,7 +710,7 @@ public class ServerTestUtil {
 
 		file.delete();
 
-		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+		BufferedWriter bw = Files.newBufferedWriter(file.toPath());
 		try {
 			for (String line : lines) {
 				bw.write(line);

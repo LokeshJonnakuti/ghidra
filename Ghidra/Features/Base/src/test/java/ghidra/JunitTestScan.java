@@ -17,6 +17,7 @@
 package ghidra;
 
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * JunitTestScan scans for 0-length JUnit xsl data files and fills in the file 
@@ -35,7 +36,7 @@ public class JunitTestScan {
 		String className = xmlFile.getName().substring(5);
 		className = className.substring(0, className.lastIndexOf(".xml"));
 		
-		BufferedWriter w = new BufferedWriter(new FileWriter(xmlFile));
+		BufferedWriter w = Files.newBufferedWriter(xmlFile.toPath());
 		w.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
 		w.write("<testsuite errors=\"0\" failures=\"1\" name=\"" + className + "\" tests=\"1\" time=\"0\">\n");
 		w.write("<testcase name=\"UNKNOWN ERROR\" time=\"0\">\n");

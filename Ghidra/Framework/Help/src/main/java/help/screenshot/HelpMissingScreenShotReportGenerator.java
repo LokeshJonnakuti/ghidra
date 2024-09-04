@@ -21,6 +21,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -100,7 +101,7 @@ public class HelpMissingScreenShotReportGenerator {
 
 		BufferedWriter writer = null;
 		try {
-			writer = new BufferedWriter(new FileWriter(outputFile));
+			writer = Files.newBufferedWriter(outputFile.toPath());
 			doGenerateReport(writer);
 			System.out.println("Report written to " + outputFile);
 		}
@@ -292,7 +293,7 @@ public class HelpMissingScreenShotReportGenerator {
 	private void generateUntestedImagesFile(File untestedOutputFile) {
 		BufferedWriter writer = null;
 		try {
-			writer = new BufferedWriter(new FileWriter(untestedOutputFile));
+			writer = Files.newBufferedWriter(untestedOutputFile.toPath());
 			doGenerateUntestedImagesFile(writer);
 		}
 		catch (Exception e) {

@@ -15,6 +15,7 @@
  */
 package ghidra.app.plugin.core.script;
 
+import java.nio.file.Files;
 import static org.junit.Assert.*;
 
 import java.awt.Window;
@@ -562,7 +563,7 @@ public abstract class AbstractGhidraScriptMgrPluginTest
 	}
 
 	protected void writeStringToFile(ResourceFile file, String string) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file.getFile(false)));
+		BufferedWriter writer = Files.newBufferedWriter(file.getFile(false).toPath());
 		writer.write(string);
 		writer.close();
 	}

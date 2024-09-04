@@ -19,6 +19,7 @@ package ghidra.framework.store.local;
 import ghidra.framework.store.Version;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 /**
@@ -297,7 +298,7 @@ class HistoryManager {
 			File tmpFile = new File(historyFile.getParentFile(), historyFile.getName() + ".new");
 			tmpFile.delete();
 
-			BufferedWriter out = new BufferedWriter(new FileWriter(tmpFile));
+			BufferedWriter out = Files.newBufferedWriter(tmpFile.toPath());
 			for (int i = 0; i < versions.length; i++) {
 				out.write(encodeVersion(versions[i]));
 				out.newLine();

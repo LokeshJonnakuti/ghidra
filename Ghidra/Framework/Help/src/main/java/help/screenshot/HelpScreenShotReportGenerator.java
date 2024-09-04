@@ -16,6 +16,7 @@
 package help.screenshot;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 import generic.theme.GThemeDefaults.Colors.Palette;
@@ -83,7 +84,7 @@ public class HelpScreenShotReportGenerator {
 				File file = new File(parentPath, prefix + ".html");
 				System.out.println("Creating output file: " + file);
 
-				writer = new BufferedWriter(new FileWriter(file));
+				writer = Files.newBufferedWriter(file.toPath());
 				writeFile(filenameNoExtension, writer, i, pageCount, list);
 			}
 			catch (Exception e) {

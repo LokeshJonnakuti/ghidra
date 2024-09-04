@@ -16,6 +16,7 @@
 package ghidra.app.plugin.processors.sleigh;
 
 import java.io.*;
+import java.nio.file.Files;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -216,7 +217,7 @@ public class SleighLanguageVolatilityTest extends AbstractGenericTest {
 		File newPspecFile = null;
 		try {
 			newPspecFile = Application.createTempFile(name, ".pspec");
-			BufferedWriter bw = new BufferedWriter(new FileWriter(newPspecFile));
+			BufferedWriter bw = Files.newBufferedWriter(newPspecFile.toPath());
 			bw.write(content);
 			bw.close();
 
@@ -241,7 +242,7 @@ public class SleighLanguageVolatilityTest extends AbstractGenericTest {
 		try {
 			File editedPspecFile = Application.createTempFile(name, ".ldefs");
 			BufferedReader br = new BufferedReader(new FileReader(originalLdefFile.getFile(false)));
-			BufferedWriter bw = new BufferedWriter(new FileWriter(editedPspecFile));
+			BufferedWriter bw = Files.newBufferedWriter(editedPspecFile.toPath());
 			String s;
 			while ((s = br.readLine()) != null) {
 				//if the string is defining a filename, edit that line

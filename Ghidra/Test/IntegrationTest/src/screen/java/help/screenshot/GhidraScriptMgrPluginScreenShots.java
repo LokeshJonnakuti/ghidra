@@ -18,6 +18,7 @@ package help.screenshot;
 import java.awt.Component;
 import java.awt.Window;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 import javax.swing.*;
@@ -313,7 +314,7 @@ public class GhidraScriptMgrPluginScreenShots extends GhidraScreenShotGenerator 
 	}
 
 	private void writeStringToFile(ResourceFile file, String string) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file.getFile(false)));
+		BufferedWriter writer = Files.newBufferedWriter(file.getFile(false).toPath());
 		writer.write(string);
 		writer.close();
 	}
