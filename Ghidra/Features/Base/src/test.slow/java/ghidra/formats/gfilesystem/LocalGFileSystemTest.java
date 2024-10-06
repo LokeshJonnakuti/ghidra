@@ -15,6 +15,7 @@
  */
 package ghidra.formats.gfilesystem;
 
+import java.nio.file.Files;
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -62,7 +63,7 @@ public class LocalGFileSystemTest {
 		File subworkdir = new File(workDir, "sub/Sub2/SUB3");
 		subworkdir.mkdirs();
 
-		File f = File.createTempFile("testfile", null, subworkdir);
+		File f = Files.createTempFile(subworkdir.toPath(), "testfile", null).toFile();
 
 		try (LocalFileSystemSub subFS =
 			new LocalFileSystemSub(workDir, localFS)) {

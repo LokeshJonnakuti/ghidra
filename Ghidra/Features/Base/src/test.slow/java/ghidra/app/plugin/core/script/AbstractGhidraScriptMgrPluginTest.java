@@ -15,6 +15,7 @@
  */
 package ghidra.app.plugin.core.script;
 
+import java.nio.file.Files;
 import static org.junit.Assert.*;
 
 import java.awt.Window;
@@ -519,7 +520,7 @@ public abstract class AbstractGhidraScriptMgrPluginTest
 			scriptDir = new File(GhidraScriptUtil.USER_SCRIPTS_DIR);
 		}
 
-		File tempFile = File.createTempFile(name, ".java", scriptDir);
+		File tempFile = Files.createTempFile(scriptDir.toPath(), name, ".java").toFile();
 		tempFile.deleteOnExit();
 		return new ResourceFile(tempFile);
 	}
