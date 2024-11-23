@@ -15,6 +15,7 @@
  */
 package ghidra.trace.database.target;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -1158,7 +1159,7 @@ public class DBTraceObjectManagerTest extends AbstractGhidraHeadlessIntegrationT
 
 	@Test
 	public void testManyAddressValuesAcrossSpaces() {
-		Random random = new Random();
+		Random random = new SecureRandom();
 		List<TraceObjectValue> values = new ArrayList<>();
 		try (Transaction tx = b.startTransaction()) {
 			TraceObjectValue rootVal =

@@ -15,6 +15,7 @@
  */
 package ghidra.app.plugin.core.searchtext;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.awt.Component;
@@ -685,7 +686,7 @@ public class SearchTextPlugin1Test extends AbstractGhidraHeadedIntegrationTest {
 		GThreadedTablePanel<ProgramLocation> threadedTablePanel =
 			(GThreadedTablePanel<ProgramLocation>) providers[0].getThreadedTablePanel();
 		GTable table = threadedTablePanel.getTable();
-		Random random = new Random();
+		Random random = new SecureRandom();
 		int randomRow = random.nextInt(model.getRowCount());
 
 		DockingActionIf deleteRowAction = getAction(tool, "TableServicePlugin", "Remove Items");

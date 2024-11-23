@@ -15,6 +15,7 @@
  */
 package ghidra.util;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.util.*;
@@ -148,7 +149,7 @@ public class IntersectionAddressSetViewTest extends AbstractGhidraHeadlessIntegr
 	}
 
 	protected AddressSet randomSet() {
-		Random r = new Random();
+		Random r = new SecureRandom();
 		AddressSet result = new AddressSet();
 		for (int i = 0; i < 20; i++) {
 			int len = r.nextInt(0x7ff) + 1;
