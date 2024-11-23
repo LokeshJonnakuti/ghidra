@@ -16,6 +16,7 @@
 package ghidra;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import db.*;
@@ -102,7 +103,7 @@ public class DatabaseBenchMarks {
 
 	private static void testRandomIntInsertions(TestTimer timer, int numInsertions) {
 		try {
-			Random random = new Random();
+			Random random = new SecureRandom();
 			DBHandle dbh = new DBHandle(BUFFER_SIZE, CACHE_SIZE);
 			long transactionID = dbh.startTransaction();
 			Schema schema =
@@ -168,7 +169,7 @@ public class DatabaseBenchMarks {
 				record.setIntValue(0, i);
 				table.putRecord(record);
 			}
-			Random random = new Random();
+			Random random = new SecureRandom();
 			timer.start("Randomly accessing 1000000 int records");
 			for (int i = 0; i < 1000000; i++) {
 				table.getRecord(random.nextInt(1000000));

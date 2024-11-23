@@ -15,6 +15,7 @@
  */
 package ghidra.generic.util.datastruct;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.util.*;
@@ -135,7 +136,7 @@ public class DynamicSortedTreeSetTest {
 	public void testAddRandomly() {
 		final int COUNT = 1000;
 		final int ROUNDS = 10;
-		Random rand = new Random();
+		Random rand = new SecureRandom();
 		CostComparator comp = new CostComparator();
 		DynamicSortedTreeSet<TestElem> queue = new DynamicSortedTreeSet<>(comp);
 		for (int r = 0; r < ROUNDS; r++) {
@@ -150,7 +151,7 @@ public class DynamicSortedTreeSetTest {
 	@Test
 	public void testRemoveRandomly() {
 		final int COUNT = 100;
-		Random rand = new Random();
+		Random rand = new SecureRandom();
 		CostComparator comp = new CostComparator();
 		DynamicSortedTreeSet<TestElem> queue = new DynamicSortedTreeSet<>(comp);
 		HashSet<TestElem> all = new HashSet<>();
@@ -176,7 +177,7 @@ public class DynamicSortedTreeSetTest {
 	@Test
 	public void testUpdateRandomly() {
 		final int COUNT = 100;
-		Random rand = new Random();
+		Random rand = new SecureRandom();
 		CostComparator comp = new CostComparator();
 		DynamicSortedTreeSet<TestElem> queue = new DynamicSortedTreeSet<>(comp);
 		for (int i = 0; i < COUNT; i++) {

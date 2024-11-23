@@ -15,6 +15,7 @@
  */
 package ghidra.util.database.spatial;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.awt.Graphics;
@@ -844,7 +845,7 @@ public class RStarTreeMapTest {
 
 	protected static List<Pair<IntRect, String>> generateRandom(IntRect range, int maxW, int maxH,
 			int count) {
-		Random r = new Random();
+		Random r = new SecureRandom();
 		List<Pair<IntRect, String>> result = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
 			int w = r.nextInt(maxW); // Actually one less

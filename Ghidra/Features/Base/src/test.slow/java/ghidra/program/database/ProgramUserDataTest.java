@@ -15,6 +15,7 @@
  */
 package ghidra.program.database;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -42,7 +43,7 @@ import utilities.util.FileUtilities;
 public class ProgramUserDataTest extends AbstractGhidraHeadedIntegrationTest {
 
 	private String TEMP = AbstractGTest.getTestDirectoryPath();
-	private static Random RAND = new Random();
+	private static Random RAND = new SecureRandom();
 
 	private ProjectLocator projectLocator;
 	private Project project;

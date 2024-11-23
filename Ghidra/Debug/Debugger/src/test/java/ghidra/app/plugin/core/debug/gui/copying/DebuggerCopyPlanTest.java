@@ -15,6 +15,7 @@
  */
 package ghidra.app.plugin.core.debug.gui.copying;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.*;
 
 import java.math.BigInteger;
@@ -71,7 +72,7 @@ public class DebuggerCopyPlanTest extends AbstractGhidraHeadedDebuggerTest {
 		DBTraceVariableSnapProgramView view = tb.trace.getProgramView();
 		assertTrue(AllCopiers.BYTES.isAvailable(view, program));
 
-		Random r = new Random();
+		Random r = new SecureRandom();
 		byte src[] = new byte[0x10000];
 		r.nextBytes(src);
 		try (Transaction tx = tb.startTransaction()) {
